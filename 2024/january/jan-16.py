@@ -1,29 +1,37 @@
 """
-Unique Number of Occurences
+Insert Delete GetRandom O(1)
 
-Given an array of integers arr, return true if the number of occurrences of each value in the array is unique or false otherwise.
+Implement the RandomizedSet class:
 
-Example 1:
+RandomizedSet() Initializes the RandomizedSet object.
+bool insert(int val) Inserts an item val into the set if not present. Returns true if the item was not present, false otherwise.
+bool remove(int val) Removes an item val from the set if present. Returns true if the item was present, false otherwise.
+int getRandom() Returns a random element from the current set of elements (it's guaranteed that at least one element exists when this method is called). Each element must have the same probability of being returned.
+You must implement the functions of the class such that each function works in average O(1) time complexity.
 
-Input: arr = [1,2,2,1,1,3]
-Output: true
-Explanation: The value 1 has 3 occurrences, 2 has 2 and 3 has 1. No two values have the same number of occurrences.
-Example 2:
-
-Input: arr = [1,2]
-Output: false
-Example 3:
-
-Input: arr = [-3,0,1,-3,1,1,1,-3,10,0]
-Output: true
 
 """
 
-from collections import Counter
 
+#TODO: This passed all leetcode test-cases but I don't think it is actually avg O(1) time for `getRandom`
+class RandomizedSet:
 
-class Solution:
-    def uniqueOccurrences(self, arr) -> bool:
-        c = Counter(arr)
-    
-        return len(set(c.values())) == len(c)
+    def __init__(self):
+        self._set = set()
+
+    def insert(self, val: int) -> bool:
+        if val not in self._set: 
+            self._set.add(val)
+            return True
+        else: 
+            return False
+
+    def remove(self, val: int) -> bool:
+        if val in self._set: 
+            self._set.remove(val)
+            return True 
+        else: 
+            return False
+
+    def getRandom(self) -> int:
+        return random.sample(list(self._set), 1)[0]

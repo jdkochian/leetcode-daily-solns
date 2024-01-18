@@ -1,36 +1,29 @@
 """
-Climbing Stairs
+Unique Number of Occurences
 
-You are climbing a staircase. It takes n steps to reach the top.
-
-Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+Given an array of integers arr, return true if the number of occurrences of each value in the array is unique or false otherwise.
 
 Example 1:
 
-Input: n = 2
-Output: 2
-Explanation: There are two ways to climb to the top.
-1. 1 step + 1 step
-2. 2 steps
+Input: arr = [1,2,2,1,1,3]
+Output: true
+Explanation: The value 1 has 3 occurrences, 2 has 2 and 3 has 1. No two values have the same number of occurrences.
 Example 2:
 
-Input: n = 3
-Output: 3
-Explanation: There are three ways to climb to the top.
-1. 1 step + 1 step + 1 step
-2. 1 step + 2 steps
-3. 2 steps + 1 step
+Input: arr = [1,2]
+Output: false
+Example 3:
+
+Input: arr = [-3,0,1,-3,1,1,1,-3,10,0]
+Output: true
+
 """
 
+from collections import Counter
+
+
 class Solution:
-    def climbStairs(self, n) -> int:
-        dp = [0] * (n + 1)
-        dp[1] = 1
-        if n == 1: 
-            return 1
-        dp[2] = 2
-        for i in range(3, n + 1):
-            dp[i] = dp[i - 1] + dp[i - 2]
-
-        return dp[-1]
-
+    def uniqueOccurrences(self, arr) -> bool:
+        c = Counter(arr)
+    
+        return len(set(c.values())) == len(c)
