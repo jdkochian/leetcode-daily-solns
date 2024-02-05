@@ -5,4 +5,5 @@ This repository houses _my_ solutions for the daily coding challenge on leetcode
 ### TODO:
 
 - Rework test case class to package to support relative imports
+    - Programmatically rename files to support 
 - Fill in backlog of solutions (ongoing)
